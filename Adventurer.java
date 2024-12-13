@@ -1,54 +1,34 @@
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Adventurer extends Creature {
     
     private String weapon;
-    static int kill = 0;
-    private HashMap<String, Integer> Abilities;
 
-    public Adventurer() {
-        this.weapon = "Sword";
-        Abilities = new HashMap<String, Integer>();
-        Abilities.put("fireball", 50);
-        Abilities.put("magicTrick", 40);
-        Abilities.put("powerSmash", 20);
-        Abilities.put("stap", 5);
-        
-        super.hp = 100;
-        super.attack = 20;
-        super.level = 1;
-        super.name = "Hero";
+    Adventurer(String name,int hp, float level,HashMap<String,Integer> attacks, String weapon) {
+        super(name,hp,level,attacks);
+        this.weapon = weapon;
+    }
+    
+	@Override
+	void attack(Creature c, String attack){
+		if(this.getHp() > 0){
+        c.setHp(c.getHp() - ((int) this.getLevel()) * attacks.get(attack));
+        System.out.println(this.getName() + " attacks with "+ attack + "using a " + this.weapon);
+        if(c.getHp() > 0)
+            System.out.println(c.getName() + "'s remaining hp:" + c.getHp());
+        else
+        System.out.println(c.getName() + "'s hp dropped to 0!");
+        }
+	}
+
+    public String getWeapon() {
+        return weapon;
+    }
+    public void setWeapon(String weapon) {
+        this.weapon = weapon;
+    }
+    void levelUp(){
+        this.setLevel(this.getLevel() + 0.5);
     }
 
-    // Method to choose an ability
-    public int chooseAbility() {
-        
-        Scanner scanner = new Scanner(System.in);
-        
-        
-        System.out.println("Available abilities:");
-        for (String ability : Abilities.keySet()) {
-            System.out.println(ability + ": " + Abilities.get(ability));
-        }
-
-        
-        System.out.print("Choose an ability: ");
-        String chosenAbility = scanner.nextLine();
-
-        
-        if (Abilities.containsKey(chosenAbility)) {
-            
-            int abilityValue = Abilities.get(chosenAbility);
-
-            
-            Abilities.remove(chosenAbility);
-
-            
-            return abilityValue;
-        } else {
-            System.out.println("Ability not found!");
-            return 0;
-        }
-    }
 }

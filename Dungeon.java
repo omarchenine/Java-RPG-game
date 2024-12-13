@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+
 class Dungeon {
     private boolean isClosed;
     private char difficulty;
     private String nature;
+    ArrayList<Monster> monsters;
+    ArrayList<Adventurer> adventurers;
 
     public Dungeon(char difficulty, String nature) {
         this.isClosed = false;
@@ -38,20 +42,74 @@ class Dungeon {
 
     public void selfDestroy() {
         System.out.println("The dungeon self-destructs!");
-        setClosed(true);  // Using setter to update isClosed
+        System.out.println("You cleared the dungeon!");
     }
 
-    public void attackWithTrap(Creature target) {
-        int trapDamage = 15;
-        System.out.println("The dungeon attacks " + target.name + " with a trap for " + trapDamage + " damage!");
-        target.hp -= trapDamage;
-        if (target.hp <= 0) {
-            target.die();
+    public void attackWithTrap(Adventurer target) { 
+        int trapDamage = 0;
+        switch (difficulty) {
+            case 'B':
+                trapDamage = 15; 
+                break;
+            case 'A':
+                trapDamage = 30;   
+                break;
+            case 'S':
+                trapDamage = 45;
+                break;
+
         }
+        System.out.println("The dungeon attacks " + target.getName() + " with a trap dealing " + trapDamage + " damage!");
+        target.setHp(target.getHp()  - trapDamage);
+        
     }
 
     public void close() {
         System.out.println("The dungeon is now closed. No more adventurers can enter.");
         setClosed(true);  // Using setter to update isClosed
     }
+    void addMonster(Monster m){
+        if (!isClosed) {
+            monsters.add(m);
+        }
+    }
+    void removeMonster(Monster m){
+        monsters.remove(m);
+    }
+    boolean searchMonster(Monster m){
+        return monsters.contains(m);
+    }
+    void modifyMonster(Monster m, int hp,float level,String name ){
+        for (Monster c : monsters) {
+            if(c.equals(m)){
+                c.setHp(hp);
+                c.setLevel(level);
+                c.setName(name);
+            }
+        }
+    }
+    void addAdventurer(Adventurer m){
+        if (!isClosed) {
+            System.out.println(m.getName() + "is now part of the raid team");
+            adventurers.add(m);
+        }
+    }
+    void removeAdventurer(Adventurer m){
+        System.out.println(m.getName() + "was removed from the raid team");
+        adventurers.remove(m);
+    }
+    boolean searchAdventurer(Adventurer m){
+        System.out.println(m.getName() + "is part of the raid team");
+        return adventurers.contains(m);
+    }
+    void modifyAdventurer(Adventurer m, int hp,float level,String name ){
+        for (Adventurer c : adventurers) {
+            if(c.equals(m)){
+                c.setHp(hp);
+                c.setLevel(level);
+                c.setName(name);
+            }
+        }
+    }
+
 }

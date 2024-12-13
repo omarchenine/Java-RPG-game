@@ -4,9 +4,9 @@ import java.util.HashMap;
 public class Creature{
     private int hp;
     HashMap<String,Integer> attacks;
-    private float level;
+    private double level;
     private String name;
-    Creature(String name,int hp, float level,HashMap<String,Integer> attacks  ){
+    Creature(String name,int hp, double level,HashMap<String,Integer> attacks  ){
         this.name = name;
         this.hp = hp;
         this.attacks = attacks;
@@ -15,7 +15,7 @@ public class Creature{
     int getHp(){
         return hp;
     }
-    float getLevel(){
+    double getLevel(){
         return level;
     }
     String getName(){
@@ -24,7 +24,7 @@ public class Creature{
     void setHp(int hp){
         this.hp = hp;
     }
-    void setLevel(float level){
+    void setLevel(double level){
         this.level = level;
     }
     void setName(String name){
