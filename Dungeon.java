@@ -9,9 +9,36 @@ class Dungeon {
         this.nature = nature;
     }
 
+    // Getter and Setter for isClosed
+    public boolean isClosed() {
+        return isClosed;
+    }
+
+    public void setClosed(boolean isClosed) {
+        this.isClosed = isClosed;
+    }
+
+    // Getter and Setter for difficulty
+    public char getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(char difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    // Getter and Setter for nature
+    public String getNature() {
+        return nature;
+    }
+
+    public void setNature(String nature) {
+        this.nature = nature;
+    }
+
     public void selfDestroy() {
         System.out.println("The dungeon self-destructs!");
-        isClosed = true;
+        setClosed(true);  // Using setter to update isClosed
     }
 
     public void attackWithTrap(Creature target) {
@@ -25,10 +52,6 @@ class Dungeon {
 
     public void close() {
         System.out.println("The dungeon is now closed. No more adventurers can enter.");
-        isClosed = true;
-    }
-
-    public boolean isClosed() {
-        return isClosed;
+        setClosed(true);  // Using setter to update isClosed
     }
 }
