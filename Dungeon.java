@@ -4,8 +4,8 @@ class Dungeon {
     private boolean isClosed;
     private char difficulty;
     private String nature;
-    ArrayList<Monster> monsters;
-    ArrayList<Adventurer> adventurers;
+    ArrayList<Monster> monsters = new ArrayList<>();
+    ArrayList<Adventurer> adventurers = new ArrayList<>();
 
     public Dungeon(char difficulty, String nature) {
         this.isClosed = false;
@@ -90,16 +90,16 @@ class Dungeon {
     }
     void addAdventurer(Adventurer m){
         if (!isClosed) {
-            System.out.println(m.getName() + "is now part of the raid team");
+            System.out.println(m.getName() + " is now part of the raid team");
             adventurers.add(m);
         }
     }
     void removeAdventurer(Adventurer m){
-        System.out.println(m.getName() + "was removed from the raid team");
+        System.out.println(m.getName() + " was removed from the raid team");
         adventurers.remove(m);
     }
     boolean searchAdventurer(Adventurer m){
-        System.out.println(m.getName() + "is part of the raid team");
+        System.out.println(m.getName() + " is part of the raid team");
         return adventurers.contains(m);
     }
     void modifyAdventurer(Adventurer m, int hp,float level,String name ){

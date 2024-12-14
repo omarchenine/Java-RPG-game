@@ -13,7 +13,7 @@ public class Adventurer extends Creature {
 	void attack(Creature c, String attack){
 		if(this.getHp() > 0){
         c.setHp(c.getHp() - ((int) this.getLevel()) * attacks.get(attack));
-        System.out.println(this.getName() + " attacks with "+ attack + "using a " + this.weapon);
+        System.out.println(this.getName() + " attacks with "+ attack + " using a " + this.weapon);
         if(c.getHp() > 0)
             System.out.println(c.getName() + "'s remaining hp:" + c.getHp());
         else

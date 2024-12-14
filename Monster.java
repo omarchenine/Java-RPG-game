@@ -21,6 +21,7 @@ public class Monster extends Creature {
 	
 	public void rage(){
 		if(this.getHp() <= rageHp){
+			System.out.println("Careful the monster is now enraged");
 			this.setLevel(this.getLevel() + 1);
 		}
 	}
