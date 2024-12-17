@@ -66,7 +66,7 @@ class Dungeon {
                 break;
         }
         // Inform the player about the trap and apply the damage to the adventurer's health
-        System.out.println("The dungeon attacks " + target.getName() + " with a trap dealing " + trapDamage + " damage!");
+        System.out.println("The dungeon attacks " + target.getName() + " with a trap dealing " + trapDamage + " damage!\n");
         target.setHp(target.getHp() - trapDamage);  // Reduce adventurer's HP by trapDamage
     }
 

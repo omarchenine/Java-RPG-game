@@ -87,11 +87,11 @@ class CreatureComparator implements Comparator<Creature> {
 
         // Output comparison result based on hp values
         if (hpDifference < 0) {
-            System.out.println("The monster hp is more than " + adventurer.getName() + " hp");
+            System.out.println("\nThe monster hp is more than " + adventurer.getName() + " hp");
         } else if (hpDifference > 0) {
-            System.out.println("The monster hp is less than " + adventurer.getName() + " hp");
+            System.out.println("\nThe monster hp is less than " + adventurer.getName() + " hp");
         } else {
-            System.out.println("The monster hp is equal to " + adventurer.getName() + " hp");
+            System.out.println("\nThe monster hp is equal to " + adventurer.getName() + " hp");
         }
 
         return hpDifference;

@@ -16,7 +16,7 @@ public class Adventurer extends Creature {
             // Perform the attack on the creature 'c' and reduce its HP based on the adventurer's level and attack power
             c.setHp(c.getHp() - ((int) this.getLevel()) * attacks.get(attack));  
             // Print the attack details (which attack was used and the weapon)
-            System.out.println(this.getName() + " attacks with " + attack + " using a " + this.weapon);  
+            System.out.println(this.getName() + " attacks with " + attack + " using a " + this.weapon + "\n");  
             if (c.getHp() > 0) {  // If the monster is still alive after the attack
                 System.out.println(c.getName() + "'s remaining hp: " + c.getHp());  // Print the monster's remaining HP
             } else {

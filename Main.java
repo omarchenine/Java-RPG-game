@@ -33,7 +33,7 @@ public class Main {
             // Create hero based on role
             Adventurer hero;
             if (role == 1) {
-                hero = new Adventurer(name, 350, 1, tankAttacks, "Shield");
+                hero = new Adventurer(name, 120, 1, tankAttacks, "Shield");
             } else if (role == 2) {
                 hero = new Adventurer(name, 275, 1, mageAttacks, "Magic stick");
             } else {
@@ -46,7 +46,7 @@ public class Main {
             +" we need your help in clearing the abyss Dungeon of difficulty class "+ abyssDungeon.getDifficulty() 
             + " and the hidden runes Dungon of difficulty class "+ hiddenRuinesDungeon.getDifficulty()
             +", these two dungeons can cause chaos in our continent if the dungeon monsters escape "
-            + ", only you can do this impossible mission , the future of the kingdom depends on you. Good luck!");
+            + ", only you can do this impossible mission , the future of the kingdom depends on you. Good luck!\n");
             
             HashMap<String, Integer> slimeAttacks = new HashMap<>();
             slimeAttacks.put("basic attack", 10);
@@ -81,8 +81,8 @@ public class Main {
             hiddenRuinesDungeon.addMonster(dragon);
 
             // Add hero to the first dungeon
-            System.out.println("\nYou entered the Abyss dungeon!");
             abyssDungeon.addAdventurer(hero);
+            System.out.println("\nYou entered the Abyss dungeon!");
             abyssDungeon.close();
 
             // Play the first dungeon
@@ -94,9 +94,10 @@ public class Main {
 
             System.out.println("\nCongratulations you cleared the abyss dungeon!!");
             System.out.println("\nNow only one dungeon remaining!!");
-            System.out.println("\nYou entered the hidden ruines dungeon!");
             hiddenRuinesDungeon.addAdventurer(hero);// Add hero to the second dungeon
-            abyssDungeon.close();
+
+            System.out.println("\nYou entered the hidden ruines dungeon!");
+            hiddenRuinesDungeon.close();
             boolean survivedHiddenRuinsDungeon = play(hiddenRuinesDungeon, hero,scanner);// Play the second dungeon
             if (!survivedHiddenRuinsDungeon) {
                 scanner.close();  // Ensure scanner is closed if the hero dies in the second dungeon
@@ -165,7 +166,7 @@ public class Main {
                     
                     // Random trap event (30% chance)
                     if (random.nextInt(10) < 3) {
-                        System.out.println("Oh no you were attacked by a trap!");
+                        System.out.println("\nOh no you were attacked by a trap!");
                         dungeonMonsters.attackWithTrap(hero);
                     }
                     
